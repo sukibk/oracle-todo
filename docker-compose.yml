@@ -1,0 +1,50 @@
+services:
+  mysql-db:
+    image: mysql
+    container_name: mysql-db
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: todo
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - todo-network
+
+  quarkus-app:
+    image: quay.io/branislav_trajkov00/todo
+    container_name: todo-app
+    platform: linux/amd64  # Specify the platform
+    environment:
+      QUARKUS_DATASOURCE_JDBC_URL: jdbc:mysql://mysql-db:3306/todo
+      QUARKUS_DATASOURCE_USERNAME: root
+      QUARKUS_DATASOURCE_PASSWORD: root
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql-db
+    networks:
+      - todo-network
+    restart: always
+
+  frontend-app:
+    image: docker.io/markosudar/todo-fe  # Replace this with your frontend image name
+    container_name: frontend-app
+    platform: linux/arm64  # Specify the platform
+    ports:
+      - "3000:3000"  # Exposing the frontend app on port 3000
+    depends_on:
+      - quarkus-app  # Ensure backend is up before frontend
+    networks:
+      - todo-network
+    restart: always
+
+volumes:
+  mysql_data:
+
+networks:
+  todo-network:
+    driver: bridge

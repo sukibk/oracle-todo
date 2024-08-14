@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-100;
+}
+
+header {
+    @apply bg-blue-600 text-white p-4 flex justify-between items-center;
+}
+
+header h1 {
+    @apply text-2xl font-bold;
+}
+
+header button {
+    @apply bg-white text-blue-600 px-4 py-2 rounded mr-2;
+}
+
+main {
+    @apply p-4;
+}
+
+form input {
+    @apply w-full p-2 border border-gray-300 rounded mb-2;
+}
+
+form button {
+    @apply w-full bg-blue-600 text-white p-2 rounded;
+}
+
+ul li {
+    @apply flex justify-between items-center bg-gray-100 p-2 rounded mb-2;
+}
+
+ul li button {
+    @apply text-red-600;
+}
