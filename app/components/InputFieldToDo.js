@@ -25,7 +25,7 @@ export default function InputFieldToDo({ onAdd, categories }) {
             };
 
             try {
-                const response = await axios.post('http://localhost:8080/items', newTask, {
+                const response = await axios.post('http://129.151.249.132:8080/items', newTask, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         'Content-Type': 'application/json'

@@ -44,7 +44,7 @@ export default function TodoItem({ id, task, category, date, onDelete, onUpdate,
                 status: 'new'  // Or retain the current status if you're tracking it
             };
 
-            await axios.put('http://localhost:8080/items', updatedTask, {
+            await axios.put('http://129.151.249.132:8080/items', updatedTask, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ export default function TodoItem({ id, task, category, date, onDelete, onUpdate,
 
     const handleDeleteTask = async () => {
         try {
-            await axios.delete(`http://localhost:8080/items/${id}`, {
+            await axios.delete(`http://129.151.249.132:8080/items/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

@@ -28,7 +28,7 @@ export default function TodoLayout() {
     const fetchTasks = async () => {
         if (!userID || !token) return;
         try {
-            const response = await axios.get(`http://localhost:8080/items/user/${userID}`, {
+            const response = await axios.get(`http://129.151.249.132:8080/items/user/${userID}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -51,7 +51,7 @@ export default function TodoLayout() {
 
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/categories', {
+                const response = await axios.get('http://129.151.249.132:8080/categories', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

@@ -69,7 +69,7 @@ export default function Header() {
         }
 
         try {
-            await axios.post('http://localhost:8080/users/register', {
+            await axios.post('http://129.151.249.132:8080/users/register', {
                 username: registerData.username,
                 password: registerData.password,
                 mail: registerData.email,
